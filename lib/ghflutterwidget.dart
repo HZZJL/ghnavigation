@@ -34,6 +34,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'memberwidget.dart'; 
 import 'member.dart';
 import 'strings.dart';
 
@@ -76,6 +77,7 @@ class GHFlutterState extends State<GHFlutterWidget> {
               backgroundColor: Colors.green,
               backgroundImage: new NetworkImage(_members[i].avatarUrl)
           ),
+          onTap: () { _pushMember(_members[i]); },
         )
     );
   }
@@ -91,6 +93,25 @@ class GHFlutterState extends State<GHFlutterWidget> {
         _members.add(member);
       }
     });
+  }
+
+  _pushMember(Member member) {
+    Navigator.of(context).push(new PageRouteBuilder(
+      opaque: true,
+      transitionDuration: const Duration(milliseconds: 1000),
+      pageBuilder: (BuildContext context, _, __) {
+        return new MemberWidget(member);
+      },
+      transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
+        return new FadeTransition(
+          opacity: animation,
+          child: new RotationTransition(
+            turns: new Tween<double>(begin: 0.0, end: 1.0).animate(animation),
+            child: child,
+          ),
+        );
+      }
+    ));
   }
 }
 
