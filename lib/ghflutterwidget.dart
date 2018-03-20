@@ -70,15 +70,15 @@ class GHFlutterState extends State<GHFlutterWidget> {
 
   Widget _buildRow(int i) {
     return new Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: new ListTile(
-          title: new Text("${_members[i].login}", style: _biggerFont),
-          leading: new CircleAvatar(
-              backgroundColor: Colors.green,
-              backgroundImage: new NetworkImage(_members[i].avatarUrl)
-          ),
-          onTap: () { _pushMember(_members[i]); },
-        )
+      padding: const EdgeInsets.all(16.0),
+      child: new ListTile(
+        title: new Text("${_members[i].login}", style: _biggerFont),
+        leading: new CircleAvatar(
+            backgroundColor: Colors.green,
+            backgroundImage: new NetworkImage(_members[i].avatarUrl)
+        ),
+        onTap: () { _pushMember(_members[i]); },
+      )
     );
   }
 
