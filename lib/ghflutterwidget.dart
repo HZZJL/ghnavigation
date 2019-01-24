@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Razeware LLC
+ * Copyright (c) 2019 Razeware LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -84,7 +84,7 @@ class GHFlutterState extends State<GHFlutterWidget> {
     String dataURL = "https://api.github.com/orgs/raywenderlich/members";
     http.Response response = await http.get(dataURL);
     setState(() {
-      final membersJSON = JSON.decode(response.body);
+      final membersJSON = jsonDecode(response.body);
 
       for (var memberJSON in membersJSON) {
         final member = new Member(memberJSON["login"], memberJSON["avatar_url"]);
