@@ -52,14 +52,14 @@ class GHFlutterState extends State<GHFlutterWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold (
-      appBar: new AppBar(
-        title: new Text(Strings.appTitle),
+    return Scaffold (
+      appBar: AppBar(
+        title: Text(Strings.appTitle),
       ),
-      body: new ListView.builder(
+      body: ListView.builder(
           itemCount: _members.length * 2,
           itemBuilder: (BuildContext context, int position) {
-            if (position.isOdd) return new Divider();
+            if (position.isOdd) return Divider();
 
             final index = position ~/ 2;
 
@@ -71,11 +71,11 @@ class GHFlutterState extends State<GHFlutterWidget> {
   Widget _buildRow(int i) {
     return new Padding(
       padding: const EdgeInsets.all(16.0),
-      child: new ListTile(
-        title: new Text("${_members[i].login}", style: _biggerFont),
-        leading: new CircleAvatar(
+      child: ListTile(
+        title: Text("${_members[i].login}", style: _biggerFont),
+        leading: CircleAvatar(
             backgroundColor: Colors.green,
-            backgroundImage: new NetworkImage(_members[i].avatarUrl)
+            backgroundImage: NetworkImage(_members[i].avatarUrl)
         ),
         onTap: () { _pushMember(_members[i]); },
       )
@@ -89,7 +89,7 @@ class GHFlutterState extends State<GHFlutterWidget> {
       final membersJSON = jsonDecode(response.body);
 
       for (var memberJSON in membersJSON) {
-        final member = new Member(memberJSON["login"], memberJSON["avatar_url"]);
+        final member = Member(memberJSON["login"], memberJSON["avatar_url"]);
         _members.add(member);
       }
     });
@@ -117,5 +117,5 @@ class GHFlutterState extends State<GHFlutterWidget> {
 
 class GHFlutterWidget extends StatefulWidget {
   @override
-  createState() => new GHFlutterState();
+  createState() => GHFlutterState();
 }
