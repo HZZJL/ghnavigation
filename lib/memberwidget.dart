@@ -90,7 +90,7 @@ class MemberState extends State<MemberWidget> {
           )
       ],
     );
-    showDialog(context: context, child: alert);
+    showDialog(context: context, builder: (BuildContext context) { return alert; });
   }
 }
 
