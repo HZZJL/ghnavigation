@@ -33,10 +33,15 @@ import 'package:flutter/material.dart';
 
 import 'member.dart';
 
-class MemberState extends State<MemberWidget> {
+class MemberWidget extends StatelessWidget {
   final Member member;
 
-  MemberState(this.member);
+  MemberWidget(this.member)  {
+    if (member == null) {
+      throw new ArgumentError("member of MemberWidget cannot be null. "
+          "Received: '$member'");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,18 +97,4 @@ class MemberState extends State<MemberWidget> {
     );
     showDialog(context: context, builder: (BuildContext context) { return alert; });
   }
-}
-
-class MemberWidget extends StatefulWidget {
-  final Member member;
-
-  MemberWidget(this.member)  {
-    if (member == null) {
-      throw new ArgumentError("member of MemberWidget cannot be null. "
-          "Received: '$member'");
-    }
-  }
-
-  @override
-  createState() => new MemberState(member);
 }
