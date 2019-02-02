@@ -1,8 +1,3 @@
 # ghnavigation
 
-GitHub Flutter navigation app.
-
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+Sample project for raywenderlich.com [Flutter Navigation](https://www.raywenderlich.com/978120-flutter-navigation) screencast.
